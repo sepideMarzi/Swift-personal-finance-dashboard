@@ -21,12 +21,12 @@ class FinanceApp {
         let savings = SavingsAccount(name: "Vacation Fund", initialBalance: 500.00, interestRate: 0.02)
 
         // Add some transactions
-        checking.addTransaction(description: "Paycheck", amount: 2200.00, type: .income)
-        checking.addTransaction(description: "Groceries", amount: 150.75, type: .expense)
-        checking.addTransaction(description: "Rent", amount: 1200.00, type: .expense)
+        checking.addTransaction(description: "Paycheck", amount: 2200.00, type: TransactionType.income)
+        checking.addTransaction(description: "Groceries", amount: 150.75, type: TransactionType.expense)
+        checking.addTransaction(description: "Rent", amount: 1200.00, type: TransactionType.expense)
 
-        savings.addTransaction(description: "Initial Deposit", amount: 500.00, type: .income)
-        savings.addTransaction(description: "Concert Tickets", amount: 250.00, type: .expense)
+        savings.addTransaction(description: "Initial Deposit", amount: 500.00, type: TransactionType.income)
+        savings.addTransaction(description: "Concert Tickets", amount: 250.00, type: TransactionType.expense)
 
         // Apply interest to the savings account
         savings.applyInterest()

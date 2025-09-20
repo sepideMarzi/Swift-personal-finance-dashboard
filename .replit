@@ -7,3 +7,26 @@ channel = "stable-24_05"
 
 [agent]
 expertMode = true
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "SwiftApp"
+
+[[workflows.workflow]]
+name = "SwiftApp"
+author = "agent"
+
+[workflows.workflow.metadata]
+outputType = "console"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "swiftc -o main Reportable.swift TransactionType.swift Transaction.swift Account.swift ReportGenerator.swift main.swift && ./main"

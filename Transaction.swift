@@ -21,7 +21,7 @@ struct Transaction: Identifiable, Equatable, Reportable {
 
     // Fulfills Requirement: Computed Property
     var isExpense: Bool {
-        return type == .expense
+        return type == TransactionType.expense
     }
 
     // Initializer to create new transactions
@@ -40,7 +40,9 @@ struct Transaction: Identifiable, Equatable, Reportable {
 
     // Fulfills Requirement: Reportable Conformance
     func generateReport() -> String {
-        let formattedDate = date.formatted(date: .abbreviated, time: .omitted)
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        let formattedDate = formatter.string(from: date)
         return "On \(formattedDate), \(description) (\(type.rawValue)): $\(String(format: "%.2f", amount))"
     }
 }
