@@ -5,13 +5,7 @@
 
 import Foundation
 
-// Fulfills Requirement: Transaction Struct (2 pts)
-// - It's a struct.
-// - It conforms to Identifiable and Equatable.
-// - It has a computed property 'isExpense'.
-//
-// Also Fulfills:
-// - Conforms to the custom 'Reportable' protocol.
+
 struct Transaction: Identifiable, Equatable, Reportable {
     let id: UUID
     let date: Date
@@ -19,12 +13,10 @@ struct Transaction: Identifiable, Equatable, Reportable {
     let amount: Double
     let type: TransactionType
 
-    // Fulfills Requirement: Computed Property
     var isExpense: Bool {
         return type == TransactionType.expense
     }
 
-    // Initializer to create new transactions
     init(id: UUID = UUID(), date: Date = Date(), description: String, amount: Double, type: TransactionType) {
         self.id = id
         self.date = date
@@ -33,12 +25,10 @@ struct Transaction: Identifiable, Equatable, Reportable {
         self.type = type
     }
 
-    // Fulfills Requirement: Equatable Conformance
     static func == (lhs: Transaction, rhs: Transaction) -> Bool {
         return lhs.id == rhs.id
     }
 
-    // Fulfills Requirement: Reportable Conformance
     func generateReport() -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .short

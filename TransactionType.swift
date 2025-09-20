@@ -5,8 +5,7 @@
 
 import Foundation
 
-// Fulfills Requirement: Enumerations (1 pt)
-// - Has a raw value of type String.
+// This enum represents the type of a transaction, either income or expense.
 enum TransactionType: String {
     case income = "Income"
     case expense = "Expense"

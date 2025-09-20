@@ -5,9 +5,7 @@
 
 import Foundation
 
-// Fulfills Requirement: Custom Protocol (1 pt)
-// - This protocol can be adopted by any class or struct.
-// - It requires the conforming type to implement a method that returns a String.
+//this file defines a protocol named 'Reportable' with a single method 'generateReport()' that returns a string. and any cinforming type can generate a report string.
 protocol Reportable {
     func generateReport() -> String
 }
