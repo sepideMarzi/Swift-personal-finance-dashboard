@@ -16,7 +16,7 @@ class Account: Reportable {
     func addTransaction(description: String, amount: Double, type: TransactionType) {
         let transaction = Transaction(description: description, amount: amount, type: type)
         transactions.append(transaction)
-        if type == .income {
+        if type == TransactionType.income {
             balance += amount
         } else {
             balance -= amount
@@ -24,7 +24,7 @@ class Account: Reportable {
     }
 
     func displayDetails() -> String {
-        return "Account: \(name) | Balance: $\(String(format: ".2f", balance))"
+        return "Account: \(name) | Balance: $\(String(format: "%.2f", balance))"
     }
 
     func generateReport() -> String {
@@ -44,7 +44,7 @@ class Account: Reportable {
 
 class CheckingAccount: Account {
     override func displayDetails() -> String {
-        return "Checking Account: \(name) | Balance: $\(String(format: ".2f", balance))"
+        return "Checking Account: \(name) | Balance: $\(String(format: "%.2f", balance))"
     }
 }
 
@@ -59,12 +59,12 @@ class SavingsAccount: Account {
     func applyInterest() {
         let interestAmount = balance * interestRate
         addTransaction(description: "Interest Applied", amount: interestAmount, type: .income)
-        print("Applied $\(String(format: ".2f", interestAmount)) interest to \(name).")
+        print("Applied $\(String(format: "%.2f", interestAmount)) interest to \(name).")
     }
 
     override func displayDetails() -> String {
-        let ratePercent = String(format: ".2f", interestRate * 100)
-        return "Savings Account: \(name) | Balance: $\(String(format: ".2f", balance)) | Interest Rate: \(ratePercent)%"
+        let ratePercent = String(format: "%.2f", interestRate * 100)
+        return "Savings Account: \(name) | Balance: $\(String(format: "%.2f", balance)) | Interest Rate: \(ratePercent)%"
     }
 }
 
