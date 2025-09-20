@@ -1,9 +1,4 @@
 
-
-//
-//  Account.swift
-//
-
 import Foundation
 
 // Fulfills Requirement: Account Class Hierarchy (2 pts)
@@ -28,7 +23,7 @@ class Account: Reportable {
     func addTransaction(description: String, amount: Double, type: TransactionType) {
         let transaction = Transaction(description: description, amount: amount, type: type)
         transactions.append(transaction)
-        if type == TransactionType.income {
+        if type == .income {
             balance += amount
         } else {
             balance -= amount
@@ -73,7 +68,7 @@ class SavingsAccount: Account {
 
     func applyInterest() {
         let interestAmount = balance * interestRate
-        addTransaction(description: "Interest Applied", amount: interestAmount, type: TransactionType.income)
+        addTransaction(description: "Interest Applied", amount: interestAmount, type: .income)
         print("Applied $\(String(format: ".2f", interestAmount)) interest to \(name).")
     }
 
